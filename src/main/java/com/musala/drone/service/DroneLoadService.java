@@ -7,6 +7,6 @@ import java.util.List;
 
 public interface DroneLoadService {
     DroneLoad save(DroneLoad droneLoad);
-    DroneLoad update(String name, DroneLoad droneLoad);
+    DroneLoad update(Integer name, DroneLoad droneLoad);
     List<DroneLoad> getByDrone(String droneName);
 }
