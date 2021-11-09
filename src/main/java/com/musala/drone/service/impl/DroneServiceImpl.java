@@ -19,8 +19,8 @@ public class DroneServiceImpl implements DroneService {
     }
 
     @Override
-    public Drone update(String name, Drone drone) {
-        repository.findById(name).orElseThrow(() -> new NotFoundException("Drone not found for name :: " + name));
+    public Drone update(String serialNumber, Drone drone) {
+        repository.findById(serialNumber).orElseThrow(() -> new NotFoundException("Drone not found for name :: " + serialNumber));
 //        drone.setSerialNumber(drone.getSerialNumber());
         return this.repository.save(drone);
     }
@@ -31,12 +31,12 @@ public class DroneServiceImpl implements DroneService {
     }
 
     @Override
-    public Drone getDroneByName(String name) {
-        return repository.getOne(name);
+    public Drone getDroneByName(String serialNumber) {
+        return repository.getOne(serialNumber);
     }
 
     @Override
-    public void loadDrone(String name, List<Medication> medications) {
+    public void loadDrone(String serialNumber, List<Medication> medications) {
 
     }
 }

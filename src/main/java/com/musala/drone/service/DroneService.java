@@ -7,8 +7,8 @@ import java.util.List;
 
 public interface DroneService {
     Drone save(Drone drone);
-    Drone update(String name, Drone drone);
+    Drone update(String serialNumber, Drone drone);
     List<Drone> getAll();
-    Drone getDroneByName(String name);
+    Drone getDroneByName(String serialNumber);
     void loadDrone(String name,List<Medication> medications);
 }
