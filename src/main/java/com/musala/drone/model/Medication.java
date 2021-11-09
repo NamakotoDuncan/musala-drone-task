@@ -5,8 +5,11 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.Table;
+import java.io.Serializable;
 
 @Data
 @AllArgsConstructor
@@ -14,9 +17,11 @@ import javax.persistence.Table;
 @Builder
 @Entity
 @Table
-public class Medication {
+public class Medication implements Serializable {
+    @Id
     private String name;
     private double weight;
     private String code;
+    @Column(name = "image_url")
     private String imageUrl;
 }
