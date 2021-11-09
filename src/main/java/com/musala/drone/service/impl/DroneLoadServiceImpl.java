@@ -4,11 +4,13 @@ import com.musala.drone.model.DroneLoad;
 import com.musala.drone.repository.DroneLoadRepository;
 import com.musala.drone.service.DroneLoadService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.webjars.NotFoundException;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Service
 public class DroneLoadServiceImpl implements DroneLoadService {
     @Autowired
     private DroneLoadRepository repository;

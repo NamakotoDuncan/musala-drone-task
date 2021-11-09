@@ -4,10 +4,12 @@ import com.musala.drone.model.Medication;
 import com.musala.drone.repository.MedicationRepository;
 import com.musala.drone.service.MedicationService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.webjars.NotFoundException;
 
 import java.util.List;
 
+@Service
 public class MedicationServiceImpl implements MedicationService {
 
     @Autowired
