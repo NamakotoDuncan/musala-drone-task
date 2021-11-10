@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.constraints.*;
 import java.io.Serializable;
 import java.util.List;
 
@@ -19,10 +20,23 @@ import java.util.List;
 public class Drone implements Serializable {
     @Id
     @Column(name = "serial_number")
+    @NotBlank(message = "Serial Number mandatory")
+    @Size(min = 1, message = "{validation.serialNumber.size.too_short}")
+    @Size(max = 100, message = "{validation.serialNumber.size.too_long}")
     private String serialNumber;
-    private String model;
+
+    @Enumerated(EnumType.ORDINAL)
+    private DroneModel model;
+
+    /*
+    * @Min(1)
+  @Max(10)
+    * */
     static double weightLimit = 500;
+
     @Column(name = "battery_capacity")
+    @Min(0)
+    @Max(100)
     private double batteryCapacity;
     //    private String state;
     @Enumerated(EnumType.ORDINAL)

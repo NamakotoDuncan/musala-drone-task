@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 
 @Data
@@ -23,11 +24,13 @@ public class DroneLoad implements Serializable {
     @JsonBackReference
     @ManyToOne(cascade= { CascadeType.ALL})
     @JoinColumn(name="drone_name")
+    @NotBlank(message = "Drone mandatory")
     private Drone drone;
 
     @JsonBackReference
     @ManyToOne(cascade= { CascadeType.ALL})
     @JoinColumn(name="medication_name")
+    @NotBlank(message = "Medication mandatory")
     private Medication medication;
 
 }

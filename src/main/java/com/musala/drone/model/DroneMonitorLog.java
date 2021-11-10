@@ -7,6 +7,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 @Data
@@ -23,9 +25,11 @@ public class DroneMonitorLog {
     @JsonBackReference
     @ManyToOne(cascade= { CascadeType.ALL})
     @JoinColumn(name="drone_name")
+    @NotNull(message = "Drone mandatory")
     private Drone drone;
 
     @Column(name = "battery_capacity")
+    @NotNull(message = "Battery capacity mandatory")
     private double batteryCapacity;
 
     @Column(name="timestamp", columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP")

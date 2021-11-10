@@ -1,8 +1,6 @@
 package com.musala.drone.utils;
 
-import com.musala.drone.model.Drone;
-import com.musala.drone.model.DroneState;
-import com.musala.drone.model.Medication;
+import com.musala.drone.model.*;
 
 import java.util.Arrays;
 import java.util.List;
@@ -15,10 +13,10 @@ public class MockDataUtil {
 
     public static Supplier<List<Drone>> droneSupplier =  () ->
             Arrays.asList(
-        Drone.builder().batteryCapacity(89).serialNumber("AOOO1").model("SONY").status(DroneState.IDLE).build(),
-        Drone.builder().batteryCapacity(89).serialNumber("AOOO2").model("SAMSUNG").status(DroneState.IDLE).build(),
-        Drone.builder().batteryCapacity(89).serialNumber("AOOO3").model("APPLE").status(DroneState.IDLE).build(),
-        Drone.builder().batteryCapacity(89).serialNumber("AOOO4").model("LG").status(DroneState.IDLE).build()
+        Drone.builder().batteryCapacity(89).serialNumber("AOOO-1").model(DroneModel.CRUISERWEIGHT).status(DroneState.IDLE).build(),
+        Drone.builder().batteryCapacity(89).serialNumber("AOOO-2").model(DroneModel.HEAVYWEIGHT).status(DroneState.IDLE).build(),
+        Drone.builder().batteryCapacity(89).serialNumber("AOOO-3").model(DroneModel.LIGHTWEIGHT).status(DroneState.IDLE).build(),
+        Drone.builder().batteryCapacity(89).serialNumber("AOOO-4").model(DroneModel.MIDDLEWEIGHT).status(DroneState.IDLE).build()
     );
 
     public static Supplier<List<Medication>> medicationSupplier = () ->
@@ -28,4 +26,12 @@ public class MockDataUtil {
     Medication.builder().name("EYE DROP").code("003").weight(125).imageUrl("https://tinyurl.com/3ykwwwe4").build(),
     Medication.builder().name("STEROID").code("002").weight(200).imageUrl("https://tinyurl.com/3ykwwwe4").build()
     );
+
+    public static Supplier<List<DroneLoad>> droneLoadSupplier = () ->
+            Arrays.asList(
+            );
+
+    public static Supplier<List<DroneMonitorLog>> droneMonitorLogSupplier = () ->
+            Arrays.asList(
+            );
 }
