@@ -28,10 +28,24 @@ public class MockDataUtil {
     );
 
     public static Supplier<List<DroneLoad>> droneLoadSupplier = () ->
-            Arrays.asList(
-            );
+      /*
+        Drone d1 = Drone.builder().batteryCapacity(89).serialNumber("AOOO-1").model(DroneModel.CRUISERWEIGHT).status(DroneState.IDLE).build();
+        Drone d2 = Drone.builder().batteryCapacity(89).serialNumber("AOOO-2").model(DroneModel.CRUISERWEIGHT).status(DroneState.IDLE).build();
+        Medication m1 = Medication.builder().name("PARACETAMOL").code("001").weight(35).imageUrl("https://tinyurl.com/3ykwwwe4").build();
+        Medication m2 = Medication.builder().name("INSULIN").code("002").weight(315).imageUrl("https://tinyurl.com/3ykwwwe4").build();
+        DroneLoad dl1 = DroneLoad.builder().drone(d1).medication(m2).build();
+        DroneLoad dl2 = DroneLoad.builder().drone(d2).medication(m1).build();
+        return [dl1,dl2];
+        */
+        Arrays.asList(
+                DroneLoad.builder().drone(Drone.builder().batteryCapacity(89).serialNumber("AOOO-12").model(DroneModel.CRUISERWEIGHT).status(DroneState.IDLE).build()).
+                        medication(Medication.builder().name("PARACETAMOLw").code("007").weight(35).imageUrl("https://tinyurl.com/3ykwwwe4").build()).build()
+        );
 
     public static Supplier<List<DroneMonitorLog>> droneMonitorLogSupplier = () ->
             Arrays.asList(
+                    DroneMonitorLog.builder().batteryCapacity(25).drone(
+                            Drone.builder().batteryCapacity(89).serialNumber("AOOO-1A").model(DroneModel.CRUISERWEIGHT).status(DroneState.IDLE).build()
+                    ).build()
             );
 }

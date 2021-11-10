@@ -43,7 +43,7 @@ public class Drone implements Serializable {
     private DroneState status;
 
     @JsonManagedReference
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "drone",
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "drone",
             cascade = {
                     CascadeType.MERGE,
                     CascadeType.PERSIST,

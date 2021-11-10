@@ -24,13 +24,13 @@ public class DroneLoad implements Serializable {
     @JsonBackReference
     @ManyToOne(cascade= { CascadeType.ALL})
     @JoinColumn(name="drone_name")
-    @NotBlank(message = "Drone mandatory")
+//    @NotBlank(message = "Drone mandatory")
     private Drone drone;
 
     @JsonBackReference
     @ManyToOne(cascade= { CascadeType.ALL})
     @JoinColumn(name="medication_name")
-    @NotBlank(message = "Medication mandatory")
+//    @NotBlank(message = "Medication mandatory")
     private Medication medication;
 
 }

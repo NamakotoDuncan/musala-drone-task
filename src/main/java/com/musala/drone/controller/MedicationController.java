@@ -4,6 +4,7 @@ import com.musala.drone.model.Drone;
 import com.musala.drone.model.Medication;
 import com.musala.drone.service.MedicationService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -35,7 +36,7 @@ public class MedicationController {
         return ResponseEntity.ok().body(updatedMedication);
     }
 
-    @PostMapping
+    @PostMapping(value = "medication", consumes = { MediaType.APPLICATION_JSON_VALUE })
     public ResponseEntity<?> save(@RequestBody Medication medication) {
         Medication savedMedication = service.save(medication);
         return ResponseEntity.ok().body(savedMedication);
