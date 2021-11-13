@@ -1,5 +1,7 @@
 package com.musala.drone.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -10,6 +12,7 @@ import javax.persistence.*;
 import javax.validation.constraints.*;
 import java.io.Serializable;
 import java.util.List;
+import java.util.Objects;
 
 @Data
 @AllArgsConstructor
@@ -17,6 +20,7 @@ import java.util.List;
 @Builder
 @Entity
 @Table
+@JsonIgnoreProperties({"hibernateLazyInitializer"})
 public class Drone implements Serializable {
     @Id
     @Column(name = "serial_number")
@@ -32,17 +36,19 @@ public class Drone implements Serializable {
     * @Min(1)
   @Max(10)
     * */
-    static double weightLimit = 500;
+    public static double WEIGHT_LIMIT = 500;
 
     @Column(name = "battery_capacity")
     @Min(0)
     @Max(100)
     private double batteryCapacity;
     //    private String state;
+    @Column(name = "status")
     @Enumerated(EnumType.ORDINAL)
     private DroneState status;
 
-    @JsonManagedReference
+    @Column(name = "droneLoads")
+    @JsonBackReference("droneLoads")
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "drone",
             cascade = {
                     CascadeType.MERGE,
@@ -50,4 +56,17 @@ public class Drone implements Serializable {
                     CascadeType.REMOVE
             })
     private List<DroneLoad> droneLoads;
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(this.serialNumber, this.batteryCapacity, this.status);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Drone)) return false;
+        Drone drone = (Drone) o;
+        return Double.compare(drone.batteryCapacity, batteryCapacity) == 0 && Objects.equals(serialNumber, drone.serialNumber) && model == drone.model && status == drone.status && Objects.equals(droneLoads, drone.droneLoads);
+    }
 }

@@ -3,6 +3,7 @@ package com.musala.drone.utils;
 import com.musala.drone.model.*;
 
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 import java.util.function.Supplier;
 
@@ -39,7 +40,8 @@ public class MockDataUtil {
         */
         Arrays.asList(
                 DroneLoad.builder().drone(Drone.builder().batteryCapacity(89).serialNumber("AOOO-12").model(DroneModel.CRUISERWEIGHT).status(DroneState.IDLE).build()).
-                        medication(Medication.builder().name("PARACETAMOLw").code("007").weight(35).imageUrl("https://tinyurl.com/3ykwwwe4").build()).build()
+                        medication(Medication.builder().name("PARACETAMOLw").code("007").weight(35).imageUrl("https://tinyurl.com/3ykwwwe4").build())
+                        .loadTime(new Date()).deliveryTime(new Date()).build()
         );
 
     public static Supplier<List<DroneMonitorLog>> droneMonitorLogSupplier = () ->

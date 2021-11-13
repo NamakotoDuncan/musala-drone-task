@@ -1,7 +1,9 @@
 package com.musala.drone.service.impl;
 
+import com.musala.drone.exceptions.RecordNotFoundException;
 import com.musala.drone.model.Drone;
 import com.musala.drone.model.DroneMonitorLog;
+import com.musala.drone.model.DroneState;
 import com.musala.drone.model.Medication;
 import com.musala.drone.repository.DroneMonitoLogRepository;
 import com.musala.drone.repository.DroneRepository;
@@ -12,6 +14,7 @@ import org.springframework.stereotype.Service;
 import org.webjars.NotFoundException;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class DroneServiceImpl implements DroneService {
@@ -29,8 +32,7 @@ public class DroneServiceImpl implements DroneService {
 
     @Override
     public Drone update(String serialNumber, Drone drone) {
-        droneRepository.findById(serialNumber).orElseThrow(() -> new NotFoundException("Drone not found for name :: " + serialNumber));
-//        drone.setSerialNumber(drone.getSerialNumber());
+        droneRepository.findById(serialNumber).orElseThrow(() -> new RecordNotFoundException("Drone not found for name :: " + serialNumber));
         return this.droneRepository.save(drone);
     }
 
@@ -58,5 +60,15 @@ public class DroneServiceImpl implements DroneService {
             log.setBatteryCapacity(d.getBatteryCapacity());
             droneMonitoLogRepository.save(log);
         }
+    }
+
+    @Override
+    public List<Drone> getAvailableDrones() {
+        return droneRepository.findAll().stream().filter(drone -> drone.getStatus()== DroneState.IDLE).collect(Collectors.toList());
+    }
+
+    @Override
+    public double checkBatteryLevel(String serialNumber) {
+        return droneRepository.getOne(serialNumber).getBatteryCapacity();
     }
 }
