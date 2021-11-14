@@ -25,8 +25,7 @@ import java.util.Objects;
 
 public class Medication implements Serializable {
     @Id
-//    @Pattern(regexp = "/^[A-Za-z0-9_-].*?$/gm")
-    @Pattern(regexp = "([A-Za-z0-9\\-\\_]+)",message = "([A-Za-z0-9\\-\\_]+)")
+    @Pattern(regexp = "^[A-Za-z0-9_-]*$",message = "Only letters numbers - and _ allowed")
     @Column(name = "name")
     private String name;
 

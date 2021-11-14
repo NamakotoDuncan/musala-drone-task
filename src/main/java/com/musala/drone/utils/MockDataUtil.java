@@ -21,11 +21,11 @@ public class MockDataUtil {
     );
 
     public static Supplier<List<Medication>> medicationSupplier = () ->
-            Arrays.asList(Medication.builder().name("PARACETAMOL").code("001").weight(35).imageUrl("https://tinyurl.com/3ykwwwe4").build(),
+            Arrays.asList(Medication.builder().name("Cough Syrup").code("001").weight(35).imageUrl("https://tinyurl.com/3ykwwwe4").build(),
     Medication.builder().name("PARACETAMOL").code("001").weight(250).imageUrl("https://tinyurl.com/3ykwwwe4").build(),
-    Medication.builder().name("INSULIN").code("002").weight(315).imageUrl("https://tinyurl.com/3ykwwwe4").build(),
-    Medication.builder().name("EYE DROP").code("003").weight(125).imageUrl("https://tinyurl.com/3ykwwwe4").build(),
-    Medication.builder().name("STEROID").code("002").weight(200).imageUrl("https://tinyurl.com/3ykwwwe4").build()
+    Medication.builder().name("Penicilin").code("002").weight(315).imageUrl("https://tinyurl.com/3ykwwwe4").build(),
+    Medication.builder().name("EYE-DROP").code("003").weight(125).imageUrl("https://tinyurl.com/3ykwwwe4").build(),
+    Medication.builder().name("STEROID").code("004").weight(200).imageUrl("https://tinyurl.com/3ykwwwe4").build()
     );
 
     public static Supplier<List<DroneLoad>> droneLoadSupplier = () ->

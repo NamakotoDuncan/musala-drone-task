@@ -8,7 +8,7 @@
 - [Lombok](https://objectcomputing.com/resources/publications/sett/january-2010-reducing-boilerplate-code-with-project-lombok)
 
 ## Assumptions
-- Medication images are not stored in the database, only an URL to the image is stored
+- Medication image is not stored in the database, only the Image URL
 - No authentication for the rest endpoints
 - No Unit tests for endpoints written
 
