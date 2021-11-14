@@ -1,12 +1,16 @@
 # musala-soft-drone
 
 ## Prerequisites
-- Java
+- Java 8
 - [Spring Boot](https://spring.io/projects/spring-boot)
 - [Maven](https://maven.apache.org/guides/index.html)
 - [H2 Database](https://www.h2database.com/html/main.html)
 - [Lombok](https://objectcomputing.com/resources/publications/sett/january-2010-reducing-boilerplate-code-with-project-lombok)
 
+## Assumptions
+- Medication images are not stored in the database, only an URL to the image is stored
+- No authentication for the rest endpoints
+- No Unit tests for endpoints written
 
 ## Tools
 - Eclipse or IntelliJ IDEA (or any preferred IDE) with embedded Maven
